@@ -1,0 +1,3 @@
+import { sql } from "drizzle-orm";
+import { integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+export const signups=sqliteTable("signups",{id:integer("id").primaryKey({autoIncrement:true}),fullName:text("full_name").notNull(),email:text("email").notNull(),businessName:text("business_name").notNull(),teamSize:text("team_size").notNull(),businessType:text("business_type").notNull(),plan:text("plan").notNull(),consent:integer("consent",{mode:"boolean"}).notNull(),createdAt:text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`)},t=>[uniqueIndex("idx_signups_email").on(t.email)]);
